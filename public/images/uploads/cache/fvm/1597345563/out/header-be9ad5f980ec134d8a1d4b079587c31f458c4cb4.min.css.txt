@@ -1,7 +1,0 @@
-PROCESSED on Thu, 03 Sep 2020 11:28:40 +0000
-/wp-content/plugins/to-top/public/css/to-top-public.css
-/wp-content/themes/Parallax-One/css/bootstrap.min.css
-/wp-content/themes/Parallax-One/css/font-awesome.min.css
-/wp-content/themes/Parallax-One/style.css
-/wp-content/uploads/themeisle-gutenberg/post-319.css
-PROCESSED from https://miodystaropolskie.pl/2019/02/03/co-pszczelarz-porabia-zima/

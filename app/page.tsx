@@ -1,6 +1,7 @@
 import About from "@/components/About";
 import Bees from "@/components/Bees";
 import FavoriteSites from "@/components/FavoriteSites";
+import OrderBanner from "@/components/OrderBanner";
 import Products from "@/components/Products";
 
 export default function HomePage() {
@@ -39,6 +40,9 @@ export default function HomePage() {
 
       {/* Sekcja Nasze pszczoły */}
       <Bees />
+
+      {/* Szeroki baner zamawiania */}
+      <OrderBanner />
 
       
     </main>
