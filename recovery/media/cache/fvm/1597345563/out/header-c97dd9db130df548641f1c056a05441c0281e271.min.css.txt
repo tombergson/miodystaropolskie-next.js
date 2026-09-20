@@ -1,0 +1,7 @@
+PROCESSED on Fri, 14 Aug 2020 07:09:40 +0000
+/wp-content/plugins/to-top/public/css/to-top-public.css
+/wp-content/plugins/wpforms-lite/assets/css/wpforms-full.css
+/wp-content/themes/Parallax-One/css/bootstrap.min.css
+/wp-content/themes/Parallax-One/css/font-awesome.min.css
+/wp-content/themes/Parallax-One/style.css
+PROCESSED from https://miodystaropolskie.pl/kontakt/

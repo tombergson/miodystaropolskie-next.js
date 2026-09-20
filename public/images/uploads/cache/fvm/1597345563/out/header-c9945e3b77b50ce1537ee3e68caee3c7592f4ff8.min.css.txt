@@ -1,0 +1,4 @@
+PROCESSED on Mon, 07 Dec 2020 15:27:03 +0000
+/wp-content/plugins/themeisle-companion/obfx_modules/gutenberg-blocks/assets/fontawesome/css/all.min.css
+/wp-content/plugins/themeisle-companion/obfx_modules/gutenberg-blocks/assets/fontawesome/css/v4-shims.min.css
+PROCESSED from https://miodystaropolskie.pl/?author=1

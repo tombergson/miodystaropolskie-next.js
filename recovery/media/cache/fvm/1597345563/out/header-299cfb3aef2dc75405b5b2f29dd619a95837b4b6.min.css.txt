@@ -1,0 +1,7 @@
+PROCESSED on Sat, 15 Aug 2020 00:59:06 +0000
+/wp-content/plugins/to-top/public/css/to-top-public.css
+/wp-content/themes/Parallax-One/css/bootstrap.min.css
+/wp-content/themes/Parallax-One/css/font-awesome.min.css
+/wp-content/themes/Parallax-One/style.css
+/wp-content/uploads/themeisle-gutenberg/post-453.css
+PROCESSED from https://miodystaropolskie.pl/2020/04/13/zaczynamy-sezon-2020/
