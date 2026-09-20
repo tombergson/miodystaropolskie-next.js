@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import Bees from "@/components/Bees";
 import FavoriteSites from "@/components/FavoriteSites";
 import Products from "@/components/Products";
 
@@ -35,6 +36,9 @@ export default function HomePage() {
       <div id="o-nas">
         <About />
       </div>
+
+      {/* Sekcja Nasze pszczoły */}
+      <Bees />
 
       
     </main>
