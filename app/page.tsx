@@ -1,4 +1,5 @@
 import FavoriteSites from "@/components/FavoriteSites";
+import Products from "@/components/Products";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,12 @@ export default function HomePage() {
 
       {/* Sekcja polecanych stron */}
       <FavoriteSites />
+
+      {/* Sekcja Nasze Miody z ID do obsługi kotwicy */}
+      <div id="miody">
+        <Products />
+      </div>
+      
     </main>
   );
 }
