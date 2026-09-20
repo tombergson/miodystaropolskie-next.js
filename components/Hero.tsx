@@ -56,8 +56,8 @@ export default function Hero() {
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative overflow-hidden flex min-h-[93.75vh] flex-col items-center justify-center px-6 text-center bg-stone-950"
-    >
+      className="relative overflow-hidden flex min-h-[85dvh] flex-col items-center justify-center px-6 text-center bg-stone-950"
+      >
       {/* Tło z delikatnym efektem ruchu za myszką i przyciemnionym filtrem */}
       <div
         ref={bgRef}
