@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import FavoriteSites from "@/components/FavoriteSites";
 import Products from "@/components/Products";
 
@@ -29,6 +30,9 @@ export default function HomePage() {
       <div id="miody">
         <Products />
       </div>
+
+      {/* Sekcja O nas */}
+      <About />
       
     </main>
   );
