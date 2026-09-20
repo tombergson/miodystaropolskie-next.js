@@ -1,5 +1,6 @@
 import About from "@/components/About";
 import Bees from "@/components/Bees";
+import ContactIcons from "@/components/ContactIcons";
 import FavoriteSites from "@/components/FavoriteSites";
 import OrderBanner from "@/components/OrderBanner";
 import Products from "@/components/Products";
@@ -43,6 +44,9 @@ export default function HomePage() {
 
       {/* Szeroki baner zamawiania */}
       <OrderBanner />
+
+      {/* Sekcja z trzema ikonami kontaktowymi */}
+      <ContactIcons />
 
       
     </main>
