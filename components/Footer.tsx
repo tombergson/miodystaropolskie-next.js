@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -56,8 +57,20 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div className="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500">
-        © {year} Miody Staropolskie
+<div className="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500 flex flex-col items-center justify-center gap-1">
+        <div className="flex items-center justify-center gap-1.5">
+          <span>Designed by</span>
+          <Image
+            src="/images/tb-grey-2.png"
+            alt="TomBergson Logo"
+            width={20}
+            height={20}
+            className="inline-block object-contain opacity-75 hover:opacity-100 transition-opacity"
+          />
+        </div>
+        <div>
+          &copy; Copyright {year} | miodystaropolskie.pl
+        </div>
       </div>
     </footer>
   );
