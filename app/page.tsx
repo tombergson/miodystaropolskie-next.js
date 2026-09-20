@@ -32,7 +32,10 @@ export default function HomePage() {
       </div>
 
       {/* Sekcja O nas */}
-      <About />
+      <div id="o-nas">
+        <About />
+      </div>
+
       
     </main>
   );
