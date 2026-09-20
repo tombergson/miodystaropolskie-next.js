@@ -4,6 +4,7 @@ import ContactIcons from "@/components/ContactIcons";
 import FavoriteSites from "@/components/FavoriteSites";
 import OrderBanner from "@/components/OrderBanner";
 import Products from "@/components/Products";
+import Socials from "@/components/Socials";
 
 export default function HomePage() {
   return (
@@ -47,6 +48,9 @@ export default function HomePage() {
 
       {/* Sekcja z trzema ikonami kontaktowymi */}
       <ContactIcons />
+
+      {/* Sekcja Facebook */}
+      <Socials />
 
       
     </main>
