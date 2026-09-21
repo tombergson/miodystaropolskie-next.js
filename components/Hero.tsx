@@ -109,9 +109,9 @@ export default function Hero() {
         <h1 className="mb-4 text-4xl font-serif font-bold tracking-tight text-white md:text-6xl drop-shadow-md">
           Miody Staropolskie
         </h1>
-        <p className="mb-8 max-w-md text-stone-200 text-base md:text-lg drop-shadow">
+        <h2 className="mb-8 max-w-md text-stone-200 text-base md:text-lg drop-shadow">
           Poznaj smak prawdziwego miodu — ekologiczny, naturalnie bezglutenowy.
-        </p>
+        </h2>
         <a
           href="#miody"
           className="rounded-md bg-amber-500 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-amber-600 hover:shadow-amber-500/25"
