@@ -40,7 +40,6 @@ export default function RootLayout({
         className={`${inter.variable} font-sans antialiased bg-cream text-ink`}
       >
         <InitialLoader />
-        {children}
         <Header />
         {children}
         <Footer />
