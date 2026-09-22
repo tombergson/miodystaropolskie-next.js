@@ -1,23 +1,23 @@
 "use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 const slideLeftVariants: Variants = {
   hidden: { opacity: 1, x: -30 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
 const slideRightVariants: Variants = {
   hidden: { opacity: 1, x: 30 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -28,15 +28,15 @@ export default function About() {
       <div className="max-w-7xl mx-auto">
         {/* Nagłówek sekcji z żółtą kreską */}
         <div className="text-center mb-16 flex flex-col items-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-ink mb-4">
             O nas
           </h2>
-          <div className="w-24 h-1 bg-amber-500 rounded-full"></div>
+          <div className="w-24 h-1 bg-honey rounded-full"></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center overflow-hidden">
           {/* Treść / Opis - po lewej stronie */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -55,7 +55,7 @@ export default function About() {
           </motion.div>
 
           {/* Zdjęcie pasieki - po prawej stronie */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
