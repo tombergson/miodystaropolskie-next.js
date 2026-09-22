@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className="scroll-smooth">
       <body
-        className={`${inter.variable} font-sans antialiased bg-cream text-ink`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-cream text-ink`}
       >
         <InitialLoader />
         <Header />

@@ -97,6 +97,10 @@ export default function Hero() {
         />
       </div>
 
+      {/* Punktowa poświata pod logo — jaśniej w centrum, ciemniej na brzegach (odwrotność winiety) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_760px_480px_at_50%_38%,rgba(250,246,239,0.55),transparent_62%)] pointer-events-none z-[7]" />
+
+
       {/* Gradient przyciemniający */}
       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/45 via-stone-950/15 to-stone-950/10 pointer-events-none z-10" />
       {/* Delikatna winieta po bokach dla skupienia uwagi na środku */}
@@ -106,40 +110,31 @@ export default function Hero() {
       <div className="relative z-20 max-w-2xl mx-auto flex flex-col items-center">
 
         {/* LOGO W HERO */}
-        <div className="mb-1 flex justify-center">
+         <div className="mb-1 flex justify-center">
           <Image
             src="/images/Main_Logo_3x2.png"
             alt="Miody Staropolskie Logo"
-            width={640}
-            height={220}
+            width={880}
+            height={303}
             priority
             style={{ width: "auto", height: "auto" }}
-            className="max-w-[380px] md:max-w-[540px] drop-shadow-lg"
+            className="max-w-[480px] md:max-w-[720px] drop-shadow-lg"
           />
         </div>
 
         {/* Ukryty nagłówek h1 dla wyszukiwarek (SEO) */}
         <h1 className="sr-only">Miody Staropolskie</h1>
 
-        <h2 className="mb-9 max-w-xl text-stone-100 text-2xl md:text-3xl leading-snug font-light drop-shadow font-playfair">
-
+         <h2 className="mb-9 max-w-xl text-stone-200/90 text-2xl md:text-3xl leading-snug font-light drop-shadow font-playfair">
           Poznaj smak prawdziwego miodu — ekologiczny, naturalnie bezglutenowy.
         </h2>
 
-        <a
+         <a
           href="#miody"
-          className="group relative inline-flex items-center gap-1.5 rounded-full bg-amber-500/90 px-5 py-2 text-xs font-medium tracking-wide text-stone-950 shadow-md shadow-amber-950/20 transition-all duration-300 hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/20"
+          className="group relative inline-flex items-center gap-2.5 rounded-full bg-stone-100/10 px-6 py-2.5 text-xs font-medium tracking-widest uppercase text-stone-200 backdrop-blur-xs transition-all duration-300 hover:bg-stone-100/20 hover:text-white"
         >
-          Sprawdź
-          <svg
-            className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2.5}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
+          Sprawdź ofertę
+          <span className="block h-1.5 w-1.5 rounded-full bg-amber-400 transition-all duration-300 group-hover:scale-150 group-hover:bg-amber-300"></span>
         </a>
       </div>
     </section>
