@@ -58,20 +58,27 @@ export default function Footer() {
         </div>
       </div>
 <div className="border-t border-neutral-800 py-4 text-center text-xs text-neutral-500 flex flex-col items-center justify-center gap-1">
-        <div className="flex items-center justify-center gap-1.5">
-          <span>Designed by</span>
-          <Image
-            src="/images/tb-grey-2.png"
-            alt="TomBergson Logo"
-            width={20}
-            height={20}
-            className="inline-block object-contain opacity-75 hover:opacity-100 transition-opacity"
-          />
-        </div>
-        <div>
-          &copy; Copyright {year} | miodystaropolskie.pl
-        </div>
-      </div>
+  <div className="flex items-center justify-center gap-1.5">
+    <span>Designed by</span>
+    <Link 
+      href="https://tombergson.eu" 
+      target="_blank" 
+      rel="noopener noreferrer"
+       
+    >
+      <Image
+        src="/images/tb-grey-2.png"
+        alt="TomBergson Logo"
+        width={18}
+        height={18}
+        className="inline-block object-contain"
+      />
+    </Link>
+  </div>
+  <div>
+    &copy; Copyright {year} | miodystaropolskie.pl
+  </div>
+</div>
     </footer>
   );
 }
