@@ -52,6 +52,7 @@ export default function Bees() {
               src="/images/uploads/2018/10/krainka.jpg"
               alt="Pszczoła Kraińska linia Kortówka"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-stone-900/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-6 text-white">
