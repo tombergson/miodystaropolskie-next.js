@@ -49,7 +49,7 @@ const cardVariants: Variants = {
 
 export default function Products({ honeys }: ProductsProps) {
   return (
-    <section className="py-16 px-6 max-w-7xl mx-auto border-y border-stone-200/80 shadow-xs relative">
+    <section id="miody" className="py-16 px-6 max-w-7xl mx-auto border-y border-stone-200/80 shadow-xs relative">
       <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-stone-300/80 to-transparent pointer-events-none" />
       
       <div className="text-center mb-12 flex flex-col items-center">

@@ -10,11 +10,8 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    console.log("Header useEffect zamontowany"); // TYMCZASOWE — usuniemy po diagnozie
-
     const handleScroll = () => {
       const show = window.scrollY > SCROLL_THRESHOLD;
-      console.log("scrollY:", window.scrollY, "show:", show); // TYMCZASOWE
       setIsVisible(show);
       if (!show) setOpen(false);
     };
