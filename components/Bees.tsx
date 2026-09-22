@@ -24,8 +24,7 @@ const slideRightVariants: Variants = {
 export default function Bees() {
   return (
     <section className="w-full bg-stone-50/50 py-20 px-6 border-y border-stone-200/80 shadow-xs relative">
-      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-stone-300/80 to-transparent pointer-events-none" />
-      
+       
       {/* Kontener ograniczający szerokość samej treści */}
       <div className="max-w-7xl mx-auto">
         {/* Nagłówek sekcji z żółtą kreską */}

@@ -23,9 +23,7 @@ export default function OrderBanner() {
         <div className="absolute inset-0 bg-stone-900/80"></div>
       </motion.div>
 
-      {/* Cieniowany pasek u góry sekcji */}
-      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-stone-300/80 to-transparent pointer-events-none z-10" />
-
+      
       {/* Treść banera wewnątrz wyśrodkowanego kontenera */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto text-white">
         <h2 className="text-2xl md:text-4xl font-serif font-bold mb-4 tracking-tight">
