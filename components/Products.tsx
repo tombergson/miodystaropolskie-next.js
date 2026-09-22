@@ -1,6 +1,18 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllHoneys } from '@/lib/honeys';
+import { motion, Variants } from "framer-motion";
+
+interface Honey {
+  slug: string;
+  title: string;
+  images?: string[];
+}
+
+interface ProductsProps {
+  honeys: Honey[];
+}
 
 const honeyDescriptions: Record<string, string> = {
   'miod-wielokwiatowy': 'Miód wielokwiatowy łączy w sobie niezwykłe właściwości różnych pożytków pszczelich.',
@@ -10,12 +22,35 @@ const honeyDescriptions: Record<string, string> = {
   'miod-lipowy': 'Miód lipowy jest wytwarzany przez pszczoły z nektaru kwiatu lipy. Czasami w smaku wyczuwalna jest mięta.',
 };
 
-export default function Products() {
-  const honeys = getAllHoneys();
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, 
+    },
+  },
+};
 
+// Kafelki są cały czas w pełni widoczne (opacity: 1), robią tylko płynny najazd
+const cardVariants: Variants = {
+  hidden: { 
+    opacity: 1, // Brak efektu rozjaśniania/migania
+    x: 20 // Startują lekko z prawej
+  },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    }
+  },
+};
+
+export default function Products({ honeys }: ProductsProps) {
   return (
     <section className="py-16 px-6 max-w-7xl mx-auto">
-      {/* Nagłówek sekcji wraz z ozdobną kreską pod spodem */}
       <div className="text-center mb-12 flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">
           Nasze Miody
@@ -26,7 +61,13 @@ export default function Products() {
         <div className="w-24 h-1 bg-amber-500 rounded-full"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div 
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }} 
+      >
         {honeys.map((honey) => {
           const imageSrc = honey.images && honey.images.length > 0 
             ? honey.images[0] 
@@ -36,11 +77,11 @@ export default function Products() {
           const description = honeyDescriptions[honey.slug] || 'Naturalny miód najwyższej jakości z polskiej pasieki.';
 
           return (
-            <div 
+            <motion.div
               key={honey.slug}
-              className="bg-white rounded-lg border border-stone-200/80 border-b-4 border-b-stone-200 shadow-xs hover:shadow-lg hover:border-b-amber-500 transition-all duration-300 flex flex-col overflow-hidden group"
+              variants={cardVariants}
+              className="bg-white rounded-lg border border-stone-200/80 border-b-4 border-b-stone-200 shadow-xs hover:shadow-lg hover:border-b-amber-500 transition-all duration-300 flex flex-col overflow-hidden group will-change-transform"
             >
-              {/* Kliknięcie na większe zdjęcie przenosi na podstronę miodu */}
               <Link 
                 href={`/${honey.slug}`} 
                 className="relative h-72 md:h-80 bg-stone-50 flex items-center justify-center p-6 overflow-hidden cursor-pointer"
@@ -62,10 +103,10 @@ export default function Products() {
                   {description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </section>
   );
 }
