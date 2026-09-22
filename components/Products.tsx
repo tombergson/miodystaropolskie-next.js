@@ -32,11 +32,10 @@ const containerVariants: Variants = {
   },
 };
 
-// Kafelki są cały czas w pełni widoczne (opacity: 1), robią tylko płynny najazd
 const cardVariants: Variants = {
   hidden: { 
-    opacity: 1, // Brak efektu rozjaśniania/migania
-    x: 20 // Startują lekko z prawej
+    opacity: 1, 
+    x: 20 
   },
   visible: { 
     opacity: 1, 
@@ -50,7 +49,9 @@ const cardVariants: Variants = {
 
 export default function Products({ honeys }: ProductsProps) {
   return (
-    <section className="py-16 px-6 max-w-7xl mx-auto">
+    <section className="py-16 px-6 max-w-7xl mx-auto border-y border-stone-200/80 shadow-xs relative">
+      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-stone-300/80 to-transparent pointer-events-none" />
+      
       <div className="text-center mb-12 flex flex-col items-center">
         <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">
           Nasze Miody
