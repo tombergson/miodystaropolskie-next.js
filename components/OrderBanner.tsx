@@ -1,20 +1,30 @@
+"use client";
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from "framer-motion";
 
 export default function OrderBanner() {
   return (
-    <section className="relative py-16 px-6 my-16 w-full overflow-hidden shadow-xl">
-      {/* Tło z grafiką rozciągnięte na 100% szerokości */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative py-20 px-6 w-full overflow-hidden border-y border-stone-200/80 shadow-xs">
+      {/* Tło z efektem subtelnego powiększenia (parallax/zoom) przy najechaniu myszką */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <Image
-          src="/images/uploads/2018/10/queen-cup-honeycomb-honey-bee-new-queen-rearing-compartment-56876-1024x683.jpeg"
+          src="/images/uploads/2018/10/queen-cup-honeycomb-honey-bee-new-queen-rearing-compartment-56876.jpeg"
           alt="Matka pszczela i plaster miodu - Miody Staropolskie"
           fill
           className="object-cover object-center"
         />
         {/* Ciemny filtr nakładany na zdjęcie dla czytelności */}
-        <div className="absolute inset-0 bg-stone-900/80 backdrop-blur-[2px]"></div>
-      </div>
+        <div className="absolute inset-0 bg-stone-900/80"></div>
+      </motion.div>
+
+      {/* Cieniowany pasek u góry sekcji */}
+      <div className="absolute top-0 left-0 w-full h-8 bg-gradient-to-b from-stone-300/80 to-transparent pointer-events-none z-10" />
 
       {/* Treść banera wewnątrz wyśrodkowanego kontenera */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto text-white">
