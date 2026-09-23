@@ -6,10 +6,10 @@ import Hero from "@/components/Hero";
 import OrderBanner from "@/components/OrderBanner";
 import Products from "@/components/Products";
 import Socials from "@/components/Socials";
-import { getAllHoneys } from "@/lib/honeys"; // 1. Importujemy funkcję pobierającą miody
+import { getAllHoneys } from "@/lib/honeys";
 
 export default function HomePage() {
-  const honeys = getAllHoneys(); // 2. Pobieramy dane na serwerze
+  const honeys = getAllHoneys(); // Pobieramy dane na serwerze
 
   return (
     <main className="min-h-screen">
@@ -21,7 +21,7 @@ export default function HomePage() {
 
       {/* Sekcja Nasze Miody z ID do obsługi kotwicy */}
       <div id="miody">
-        <Products honeys={honeys} /> {/* 3. Przekazujemy miody jako prop */}
+        <Products honeys={honeys} />
       </div>
 
       {/* Sekcja O nas */}
