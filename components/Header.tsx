@@ -2,14 +2,27 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const SCROLL_THRESHOLD = 150;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const pathname = usePathname();
+
+  // Sprawdzamy, czy jesteśmy na podstronie, na której header ma być zawsze widoczny
+  const isAlwaysVisiblePage = 
+    pathname?.startsWith("/polityka-prywatnosci") || 
+    pathname?.startsWith("/miody") ||
+    pathname?.startsWith("/produkt");
 
   useEffect(() => {
+    if (isAlwaysVisiblePage) {
+      setIsVisible(true);
+      return;
+    }
+
     const handleScroll = () => {
       const show = window.scrollY > SCROLL_THRESHOLD;
       setIsVisible(show);
@@ -19,7 +32,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isAlwaysVisiblePage]);
 
   return (
     <header
