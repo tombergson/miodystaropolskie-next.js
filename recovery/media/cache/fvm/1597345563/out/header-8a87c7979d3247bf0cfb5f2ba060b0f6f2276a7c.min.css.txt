@@ -1,7 +1,0 @@
-PROCESSED on Thu, 13 Aug 2020 21:32:04 +0000
-/wp-content/plugins/to-top/public/css/to-top-public.css
-/wp-content/themes/Parallax-One/css/bootstrap.min.css
-/wp-content/themes/Parallax-One/css/font-awesome.min.css
-/wp-content/themes/Parallax-One/style.css
-/wp-content/uploads/themeisle-gutenberg/post-474.css
-PROCESSED from https://miodystaropolskie.pl/2020/05/21/podkladamy-nowe-matki/

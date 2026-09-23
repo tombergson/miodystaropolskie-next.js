@@ -2,7 +2,7 @@
 slug: pierwsze-w-tym-roku-miodobranie
 title: Pierwsze w tym roku miodobranie
 date: 2019-05-24
-excerpt: "[caption width=\"2250\"] Ramka z miodem.[/caption] Kilka dni temu gdy pogoda była w miarę dobra podebraliśmy pszczołom trochę miodu. O tej porze roku będzie to miód wielokwiatowy. Podebranie zapasów pszczołom ma na celu zrobienie miejsca na miód akacjowy oraz zmobilizowanie ich do"
+excerpt: "Ramka z miodem.Kilka dni temu gdy pogoda była w miarę dobra podebraliśmy pszczołom trochę miodu. O tej porze roku będzie to miód wielokwiatowy. Podebranie zapasów pszczołom ma na celu zrobienie miejsca na miód akacjowy oraz zmobilizowanie ich do"
 oldUrl: /2019/05/24/pierwsze-w-tym-roku-miodobranie/
 images:
   - /images/uploads/2019/05/img_20190520_0940531564909786.jpg

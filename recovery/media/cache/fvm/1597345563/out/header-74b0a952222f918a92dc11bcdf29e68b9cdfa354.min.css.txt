@@ -1,7 +1,0 @@
-PROCESSED on Sat, 15 Aug 2020 18:50:11 +0000
-/wp-content/plugins/to-top/public/css/to-top-public.css
-/wp-content/themes/Parallax-One/css/bootstrap.min.css
-/wp-content/themes/Parallax-One/css/font-awesome.min.css
-/wp-content/themes/Parallax-One/style.css
-/wp-content/uploads/themeisle-gutenberg/post-1.css
-PROCESSED from https://miodystaropolskie.pl/2018/10/22/witajcie/

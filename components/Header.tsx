@@ -16,6 +16,7 @@ export default function Header() {
     pathname?.startsWith("/polityka-prywatnosci") || 
     pathname?.startsWith("/miody") ||
     pathname?.startsWith("/kontakt") ||
+    pathname?.startsWith("/wydarzenia") ||
     pathname?.startsWith("/produkt");
 
   useEffect(() => {
@@ -51,7 +52,7 @@ export default function Header() {
         <nav className="hidden items-center gap-8 md:flex" aria-label="Główne">
           <Link href="/" className="text-sm font-medium text-neutral-600 transition hover:text-ink">Home</Link>
           <Link href="/#miody" className="text-sm font-medium text-neutral-600 transition hover:text-ink">Nasze miody</Link>
-          <Link href="/polityka-prywatnosci" className="text-sm font-medium text-neutral-600 transition hover:text-ink">Polityka prywatności</Link>
+          <Link href="/wydarzenia" className="text-sm font-medium text-neutral-600 transition hover:text-ink">Wydarzenia</Link>
           <Link href="/kontakt" className="text-sm font-medium text-neutral-600 transition hover:text-ink">Kontakt</Link>
         </nav>
 

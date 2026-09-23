@@ -2,7 +2,7 @@
 slug: zakladamy-kraty-odgrodowe
 title: Zakładamy kraty odgrodowe.
 date: 2019-04-19
-excerpt: Wiosna w pełni. Temperatura w dzień ok. 20°C. Drzewa i krzewy kwitną jak szalone. Czas najwyższ aby pozakładać kraty odgrodowe oraz dodać węzę. [caption width="2250"] Krata odgrodowa w gnieździe.[/caption] Krata odgrodowa ma za zadanie odzielić gniazdo od miodni. Jednym słowem, m
+excerpt: Wiosna w pełni. Temperatura w dzień ok. 20°C. Drzewa i krzewy kwitną jak szalone. Czas najwyższ aby pozakładać kraty odgrodowe oraz dodać węzę. Krata odgrodowa w gnieździe. Krata odgrodowa ma za zadanie odzielić gniazdo od miodni. Jednym słowem, m
 oldUrl: /2019/04/19/zakladamy-kraty-odgrodowe/
 images:
   - /images/uploads/2019/04/img_20190419_102726811158639.jpg
