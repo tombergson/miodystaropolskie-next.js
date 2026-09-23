@@ -67,14 +67,14 @@ export default function Hero() {
           alt="Tło pasieki - Miody Staropolskie"
           fill
           priority
-          className="object-cover brightness-[0.78]"
+          className="object-cover brightness-[0.48]"
         />
       </div>
 
       {/* Warstwa dymu 1 */}
       <div
         ref={smokeRef}
-        className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[5] will-change-transform"
+        className="absolute inset-[-40px] object-cover brightness-[0.48] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[5] will-change-transform"
       >
         <Image
           src="/images/uploads/2018/10/smoke.png"
@@ -87,7 +87,7 @@ export default function Hero() {
       {/* Warstwa dymu 2 */}
       <div
         ref={smoke2Ref}
-        className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[6] will-change-transform"
+        className="absolute inset-[-40px] object-cover brightness-[0.48] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[6] will-change-transform"
       >
         <Image
           src="/images/uploads/2018/10/smoke2.png"
