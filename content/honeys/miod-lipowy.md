@@ -2,10 +2,10 @@
 slug: "miod-lipowy"
 title: "Lipowy: naturalny antybiotyk z pasieki"
 oldUrl: "/miod-lipowy/"
-image: "/images/uploads/2018/10/aside5-218x300.jpg"
+image: "/images/uploads/2018/10/aside5-218x300.webp"
 ---
 
-![lipa miód](/images/uploads/2018/10/aside5-218x300.jpg)
+![lipa miód](/images/uploads/2018/10/aside5-218x300.webp)
 
 **Miód lipowy** jest wytwarzany przez pszczoły z nektaru kwiatu lipy, nic więc w tym dziwnego, że ma równie dużo pozytywnych właściwości, co napar z samych kwiatów. Wiele konsumentów uważa miód lipowy za jeden z najsmaczniejszych miodów.
 

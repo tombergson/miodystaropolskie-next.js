@@ -2,10 +2,10 @@
 slug: "miod-wielokwiatowy"
 title: "Wielokwiatowy"
 oldUrl: "/miod-wielokwiatowy/"
-image: "/images/uploads/2018/10/aside3-218x300.jpg"
+image: "/images/uploads/2018/10/aside3-218x300.webp"
 ---
 
-![miód wielokwiatowy](/images/uploads/2018/10/aside3-218x300.jpg)
+![miód wielokwiatowy](/images/uploads/2018/10/aside3-218x300.webp)
 
 ### **Miód wielokwiatowy – bogactwo tysięcy kwiatów w jednym słoiku**
 

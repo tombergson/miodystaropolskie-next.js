@@ -2,10 +2,10 @@
 slug: "miod-spadziowy"
 title: "Spadziowy: poznaj 6 zalet produktu"
 oldUrl: "/miod-spadziowy/"
-image: "/images/uploads/2018/10/aside6-218x300.jpg"
+image: "/images/uploads/2018/10/aside6-218x300.webp"
 ---
 
-![miód spadziowy](/images/uploads/2018/10/aside6-218x300.jpg)
+![miód spadziowy](/images/uploads/2018/10/aside6-218x300.webp)
 
 ### **Miód spadziowy – dlaczego jest nazywany miodem królewskim?**
 

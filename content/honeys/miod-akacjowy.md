@@ -2,10 +2,10 @@
 slug: "miod-akacjowy"
 title: "Akacjowy: 5 Zalet dla Zdrowia"
 oldUrl: "/miod-akacjowy/"
-image: "/images/uploads/2018/10/aside4-218x300.jpg"
+image: "/images/uploads/2018/10/aside4-218x300.webp"
 ---
 
-![akacja miód](/images/uploads/2018/10/aside4-218x300.jpg)
+![akacja miód](/images/uploads/2018/10/aside4-218x300.webp)
 
 ### **Jak powstaje nasz naturalny miód akacjowy?**
 

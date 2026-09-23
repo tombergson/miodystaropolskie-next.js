@@ -2,10 +2,10 @@
 slug: "miod-nawlociowy"
 title: "Nawłoć: Delikatny nektar prosto z pasieki"
 oldUrl: "/miod-nawlociowy/"
-image: "/images/uploads/2018/10/aside7-218x300.jpg"
+image: "/images/uploads/2018/10/aside7-218x300.webp"
 ---
 
-![miód nawłoć](/images/uploads/2018/10/aside7-218x300.jpg)
+![miód nawłoć](/images/uploads/2018/10/aside7-218x300.webp)
 
 # **Miód nawłociowy – właściwości, zastosowanie i smak „polskiej manuki”**
 
