@@ -63,7 +63,7 @@ export default function Hero() {
         className="absolute inset-[-30px] w-[calc(100%+60px)] h-[calc(100%+60px)] will-change-transform"
       >
         <Image
-          src="/images/uploads/2018/10/phsep-1920HD-po-kompresji.png"
+          src="/images/uploads/2018/10/phsep-1920HD-po-kompresji.webp"
           alt="Tło pasieki - Miody Staropolskie"
           fill
           priority
@@ -77,7 +77,7 @@ export default function Hero() {
         className="absolute inset-[-40px] object-cover brightness-[0.48] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[5] will-change-transform"
       >
         <Image
-          src="/images/uploads/2018/10/smoke.png"
+          src="/images/uploads/2018/10/smoke.webp"
           alt=""
           fill
           className="object-cover opacity-70 mix-blend-screen"
@@ -90,7 +90,7 @@ export default function Hero() {
         className="absolute inset-[-40px] object-cover brightness-[0.48] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[6] will-change-transform"
       >
         <Image
-          src="/images/uploads/2018/10/smoke2.png"
+          src="/images/uploads/2018/10/smoke2.webp"
           alt=""
           fill
           className="object-cover opacity-90 mix-blend-screen"
