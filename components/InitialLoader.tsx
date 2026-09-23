@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function InitialLoader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,9 +39,17 @@ export default function InitialLoader() {
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="flex flex-col items-center gap-3">
-        <div className="w-10 h-10 border-4 border-amber-500/20 border-t-amber-500 rounded-full animate-spin"></div>
-        <span className="text-sm font-light text-stone-600 tracking-wide">Miody Staropolskie...</span>
+      <div className="flex flex-col items-center gap-4">
+        <div className="relative w-20 h-20 animate-pulse">
+          <Image 
+            src="/android-chrome-192x192.png" 
+            alt="Miody Staropolskie" 
+            fill 
+            className="object-contain drop-shadow-sm"
+            priority
+          />
+        </div>
+        <span className="text-sm font-medium text-stone-600 tracking-wider">Miody Staropolskie</span>
       </div>
     </div>
   );
