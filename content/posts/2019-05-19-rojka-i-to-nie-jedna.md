@@ -1,8 +1,8 @@
 ---
 slug: rojka-i-to-nie-jedna
-title: Rójka, i to nie jedna...
+title: "Rójka, i to nie jedna..."
 date: 2019-05-19
-excerpt: [caption width="3000"] Rójka[/caption] A więc od początku. Od piątku mam na pasiece młyn. I to dosłowny. Ładna pogoda w połączeniu z nie odebranym miodem wielokwiatowym spowodowała, że pszczoły sie wyroiły czyli stworzyły nową rodzinę i uciekły z ula. [caption width="2250"] Druga
+excerpt: "[caption width=\"3000\"] Rójka[/caption] A więc od początku. Od piątku mam na pasiece młyn. I to dosłowny. Ładna pogoda w połączeniu z nie odebranym miodem wielokwiatowym spowodowała, że pszczoły sie wyroiły czyli stworzyły nową rodzinę i uciekły z ula. [caption width=\"2250\"] Druga"
 oldUrl: /2019/05/19/rojka-i-to-nie-jedna/
 images:
   - /images/uploads/2019/05/img_20190517_1055121564909786.jpg
