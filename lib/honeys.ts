@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 const contentDirectory = path.join(process.cwd(), 'content/honeys');
 
@@ -27,12 +30,26 @@ export function getAllHoneys(): Honey[] {
 
   const filenames = fs.readdirSync(contentDirectory);
   
-  const honeys = filenames
-    .filter((filename) => filename.endsWith('.json'))
+  const honeys: Honey[] = filenames
+    .filter((filename) => filename.endsWith('.md'))
     .map((filename) => {
+      const slug = filename.replace(/\.md$/, '');
       const filePath = path.join(contentDirectory, filename);
       const fileContents = fs.readFileSync(filePath, 'utf8');
-      return JSON.parse(fileContents) as Honey;
+      
+      const { data, content } = matter(fileContents);
+
+      // Dla listy wystarczy synchroniczne przetworzenie treści
+      const processedContent = remark().use(html).processSync(content);
+      const contentHtml = processedContent.toString();
+
+      return {
+        slug,
+        title: data.title || '',
+        contentHtml,
+        images: data.images || (data.image ? [data.image] : []),
+        oldUrl: data.oldUrl || `/${slug}/`,
+      };
     });
 
   // Sortowanie produktów zgodnie z tablicą customOrder
@@ -40,7 +57,6 @@ export function getAllHoneys(): Honey[] {
     const indexA = customOrder.indexOf(a.slug);
     const indexB = customOrder.indexOf(b.slug);
 
-    // Jeśli miodu nie ma na liście, wrzuć go na koniec
     if (indexA === -1) return 1;
     if (indexB === -1) return -1;
 
@@ -48,17 +64,28 @@ export function getAllHoneys(): Honey[] {
   });
 }
 
-// Pobieranie pojedynczego miodu po slug
-export function getHoneyBySlug(slug: string): Honey | null {
+// Pobieranie pojedynczego miodu po slug (teraz poprawnie async)
+export async function getHoneyBySlug(slug: string): Promise<Honey | null> {
   try {
-    const filePath = path.join(contentDirectory, `${slug}.json`);
+    const filePath = path.join(contentDirectory, `${slug}.md`);
     
     if (!fs.existsSync(filePath)) {
       return null;
     }
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents) as Honey;
+    const { data, content } = matter(fileContents);
+
+    const processedContent = await remark().use(html).process(content);
+    const contentHtml = processedContent.toString();
+
+    return {
+      slug,
+      title: data.title || '',
+      contentHtml,
+      images: data.images || (data.image ? [data.image] : []),
+      oldUrl: data.oldUrl || `/${slug}/`,
+    };
   } catch (error) {
     return null;
   }

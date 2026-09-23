@@ -36,3 +36,10 @@ body {
 .animate-drop-custom {
   animation: dropDown 1s ease-out both;
 }
+
+.prose img {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 2rem !important;
+}
