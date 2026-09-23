@@ -90,7 +90,8 @@ export default function Products({ honeys }: ProductsProps) {
                   alt={cleanTitle}
                   width={240}
                   height={300}
-                  className="object-contain h-full transition-transform duration-500 group-hover:scale-105"
+                  style={{ height: "100%", width: "auto" }} // Naprawia ostrzeżenie Next.js dla h-full
+                  className="object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </Link>
 
