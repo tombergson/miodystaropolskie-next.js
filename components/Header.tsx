@@ -15,6 +15,7 @@ export default function Header() {
   const isAlwaysVisiblePage = 
     pathname?.startsWith("/polityka-prywatnosci") || 
     pathname?.startsWith("/miody") ||
+    pathname?.startsWith("/kontakt") ||
     pathname?.startsWith("/produkt");
 
   useEffect(() => {
