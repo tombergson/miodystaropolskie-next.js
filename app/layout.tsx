@@ -25,6 +25,30 @@ export const metadata: Metadata = {
   description:
     "Naturalne miody z pasieki w Dęblinie. Wielokwiatowy, lipowy, akacjowy, spadziowy, nawłociowy. Ekologiczny, naturalnie bezglutenowy.",
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: {
+      url: "/apple-touch-icon.png",
+      sizes: "180x180",
+      type: "image/png",
+    },
+    other: [
+      {
+        rel: "icon",
+        url: "/android-chrome-192x192.png",
+        sizes: "192x192",
+      },
+      {
+        rel: "icon",
+        url: "/android-chrome-512x512.png",
+        sizes: "512x512",
+      },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "pl_PL",
