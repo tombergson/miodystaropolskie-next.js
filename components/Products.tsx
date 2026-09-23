@@ -82,7 +82,7 @@ export default function Products({ honeys }: ProductsProps) {
               className="bg-white rounded-lg border border-stone-200/80 border-b-4 border-b-stone-200 shadow-xs hover:shadow-lg hover:border-b-honey transition-all duration-300 flex flex-col overflow-hidden group will-change-transform"
             >
               <Link
-                href={`/${honey.slug}`}
+                href={`/miody/${honey.slug}`}
                 className="relative h-72 md:h-80 bg-stone-50 flex items-center justify-center p-6 overflow-hidden cursor-pointer"
               >
                 <Image
@@ -90,7 +90,7 @@ export default function Products({ honeys }: ProductsProps) {
                   alt={cleanTitle}
                   width={240}
                   height={300}
-                  style={{ height: "100%", width: "auto" }} // Naprawia ostrzeżenie Next.js dla h-full
+                  style={{ height: "100%", width: "auto" }}
                   className="object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </Link>
@@ -99,9 +99,15 @@ export default function Products({ honeys }: ProductsProps) {
                 <h3 className="text-xl font-playfair font-semibold text-honey-dark mb-2">
                   {cleanTitle}
                 </h3>
-                <p className="text-stone-600 text-sm flex-grow">
+                <p className="text-stone-600 text-sm flex-grow mb-4">
                   {description}
                 </p>
+                <Link
+                  href={`/miody/${honey.slug}`}
+                  className="inline-block text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors mt-auto"
+                >
+                  Dowiedz się więcej &rarr;
+                </Link>
               </div>
             </motion.div>
           );

@@ -47,3 +47,19 @@ export function getAllHoneys(): Honey[] {
     return indexA - indexB;
   });
 }
+
+// Pobieranie pojedynczego miodu po slug
+export function getHoneyBySlug(slug: string): Honey | null {
+  try {
+    const filePath = path.join(contentDirectory, `${slug}.json`);
+    
+    if (!fs.existsSync(filePath)) {
+      return null;
+    }
+
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(fileContents) as Honey;
+  } catch (error) {
+    return null;
+  }
+}
