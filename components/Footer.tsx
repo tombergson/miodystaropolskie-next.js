@@ -14,9 +14,6 @@ export default function Footer() {
           <p className="font-playfair text-2xl font-semibold text-cream">
             Miody <span className="text-honey">Staropolskie</span>
           </p>
-          <p className="mt-3 text-sm text-stone-500 leading-relaxed">
-            Pasieka pod lasem · 08-530 Dęblin
-          </p>
         </div>
 
         <div>
@@ -63,7 +60,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-stone-800/60 px-6 py-6 text-center text-xs text-stone-600 flex flex-col items-center justify-center gap-2">
+      <div className="border-t border-stone-800/60 bg-white px-6 py-6 text-center text-xs text-stone-600 flex flex-col items-center justify-center gap-2">
         <div className="flex items-center justify-center gap-1.5">
           <span>Designed by</span>
           <Link
