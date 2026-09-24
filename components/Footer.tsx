@@ -25,7 +25,7 @@ export default function Footer() {
               Wyświetlana szerokość ≈ 176px * 1.5 (proporcje 3:2) * 1.6 (scale) ≈ 420px */}
           <div className="relative mt-2 h-44 w-44 overflow-hidden">
             <Image
-              src="/images/Main_Logo_3x2.png"
+              src="/images/Logo_Square.png"
               alt="Miody Staropolskie Logo"
               fill
               sizes="420px"

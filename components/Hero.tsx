@@ -100,18 +100,18 @@ export default function Hero() {
       {/* Punktowa poświata pod logo — jaśniej w centrum */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_760px_480px_at_50%_38%,rgba(250,246,239,0.6),transparent_62%)] pointer-events-none z-[7]" />
 
-            {/* Gradient od dołu — ciemne podłoże pod tagline i CTA */}
+      {/* Gradient od dołu — ciemne podłoże pod tagline i CTA */}
       <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 from-0% via-stone-950/50 via-15% to-transparent to-35% pointer-events-none z-10" />
       {/* Delikatna winieta */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(12,10,9,0.15)_100%)] pointer-events-none z-10" />
-      
+
       {/* TREŚĆ HERO */}
       <div className="relative z-20 mx-auto flex w-full max-w-[720px] flex-col items-center">
 
         {/* LOGO W HERO: kwadratowe okno z kadrowaniem na telefonie (max 288px), pełne 3:2 od md */}
         <div className="relative mb-1 aspect-square w-full max-w-72 overflow-hidden md:aspect-[3/2] md:max-w-[720px]">
           <Image
-            src="/images/Main_Logo_3x2.png"
+            src="/images/Logo_Square.png"
             alt="Miody Staropolskie Logo"
             fill
             priority
@@ -123,7 +123,7 @@ export default function Hero() {
         {/* Ukryty nagłówek h1 dla wyszukiwarek (SEO) */}
         <h1 className="sr-only">Miody Staropolskie</h1>
 
-        <h2 className="mb-9 max-w-xl text-stone-50 text-2xl md:text-3xl leading-snug font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] font-playfair">
+        <h2 className="-mt-6 mb-9 max-w-xl text-stone-50 text-2xl md:-mt-20 md:text-3xl leading-snug font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] font-playfair">
           Poznaj smak prawdziwego miodu — ekologiczny, naturalnie bezglutenowy.
         </h2>
 
