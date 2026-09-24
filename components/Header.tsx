@@ -75,7 +75,7 @@ export default function Header() {
         <nav className="flex flex-col gap-1 px-4 py-3" aria-label="Mobilne">
           <Link href="/" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100">Home</Link>
           <Link href="/#miody" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100">Nasze miody</Link>
-          <Link href="/polityka-prywatnosci" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100">Polityka prywatności</Link>
+          <Link href="/wydarzenia" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100">Wydarzenia</Link>
           <Link href="/kontakt" onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-100">Kontakt</Link>
         </nav>
       </div>
