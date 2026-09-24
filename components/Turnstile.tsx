@@ -30,7 +30,7 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
   const widgetIdRef = useRef<string | null>(null);
 
   // Pobieramy klucz z propsa lub automatycznie ze zmiennej środowiskowej
-  const activeSiteKey = siteKey || process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const activeSiteKey = (siteKey && siteKey.trim() !== "") ? siteKey : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
   useEffect(() => {
     if (!activeSiteKey) {
