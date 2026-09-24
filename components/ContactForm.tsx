@@ -105,7 +105,6 @@ export default function ContactForm() {
       {/* Stała wysokość, żeby formularz nie skakał po załadowaniu widgetu */}
       <div className="flex min-h-[65px] justify-center overflow-hidden">
         <Turnstile
-          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
           onSuccess={(token) => setToken(token)}
         />
       </div>
