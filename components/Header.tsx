@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const SCROLL_THRESHOLD = 150;
+const SCROLL_THRESHOLD = 50;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
