@@ -79,7 +79,7 @@ export default function Footer() {
             className="transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-honey"
           >
             <Image
-              src="/images/tb-grey-2.png"
+              src="/images/tb_white_fill.png"
               alt=""
               width={18}
               height={18}

@@ -14,7 +14,7 @@ const sites = [
   {
     name: "TomBergson.eu",
     href: "https://tombergson.eu",
-    icon: "/images/tb-grey-2.png",
+    icon: "/images/tb_white_fill.png",
   },
 ];
 
