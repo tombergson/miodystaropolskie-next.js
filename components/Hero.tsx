@@ -1,9 +1,11 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Hero() {
+  const [isBgLoaded, setIsBgLoaded] = useState(false);
+
   const sectionRef = useRef<HTMLElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
   const smokeRef = useRef<HTMLDivElement>(null);
@@ -67,48 +69,62 @@ export default function Hero() {
           alt="Tło pasieki - Miody Staropolskie"
           fill
           priority
-          className="object-cover brightness-[0.85]"
+          onLoad={() => setIsBgLoaded(true)}
+          className={`object-cover brightness-[0.85] transition-opacity duration-700 ${
+            isBgLoaded ? "opacity-100" : "opacity-0"
+          }`}
         />
       </div>
 
-      {/* Warstwa dymu 1 (bez filtra na wrapperze, żeby mix-blend-screen działał) */}
+      {/* Nakładki wizualne (poświata, dym, gradienty) pojawiają się płynnie dopiero po załadowaniu tła */}
       <div
-        ref={smokeRef}
-        className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[5] will-change-transform"
+        className={`absolute inset-0 transition-opacity duration-700 pointer-events-none ${
+          isBgLoaded ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <Image
-          src="/images/uploads/2018/10/smoke.webp"
-          alt=""
-          fill
-          className="object-cover opacity-60 mix-blend-screen"
-        />
+        {/* Warstwa dymu 1 */}
+        <div
+          ref={smokeRef}
+          className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[5] will-change-transform"
+        >
+          <Image
+            src="/images/uploads/2018/10/smoke.webp"
+            alt=""
+            fill
+            className="object-cover opacity-60 mix-blend-screen"
+          />
+        </div>
+
+        {/* Warstwa dymu 2 */}
+        <div
+          ref={smoke2Ref}
+          className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[6] will-change-transform"
+        >
+          <Image
+            src="/images/uploads/2018/10/smoke2.webp"
+            alt=""
+            fill
+            className="object-cover opacity-80 mix-blend-screen"
+          />
+        </div>
+
+        {/* Punktowa poświata pod logo */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_760px_480px_at_50%_38%,rgba(250,246,239,0.6),transparent_62%)] z-[7]" />
+
+        {/* Gradient od dołu */}
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 from-0% via-stone-950/50 via-15% to-transparent to-35% z-10" />
+        
+        {/* Delikatna winieta */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(12,10,9,0.15)_100%)] z-10" />
       </div>
 
-      {/* Warstwa dymu 2 */}
+      {/* TREŚĆ HERO – również pojawia się płynnie razem z tłem */}
       <div
-        ref={smoke2Ref}
-        className="absolute inset-[-40px] w-[calc(100%+80px)] h-[calc(100%+80px)] pointer-events-none z-[6] will-change-transform"
+        className={`relative z-20 mx-auto flex w-full max-w-[720px] flex-col items-center transition-opacity duration-700 ${
+          isBgLoaded ? "opacity-100" : "opacity-0"
+        }`}
       >
-        <Image
-          src="/images/uploads/2018/10/smoke2.webp"
-          alt=""
-          fill
-          className="object-cover opacity-80 mix-blend-screen"
-        />
-      </div>
-
-      {/* Punktowa poświata pod logo — jaśniej w centrum */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_760px_480px_at_50%_38%,rgba(250,246,239,0.6),transparent_62%)] pointer-events-none z-[7]" />
-
-      {/* Gradient od dołu — ciemne podłoże pod tagline i CTA */}
-      <div className="absolute inset-0 bg-gradient-to-t from-stone-950/85 from-0% via-stone-950/50 via-15% to-transparent to-35% pointer-events-none z-10" />
-      {/* Delikatna winieta */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(12,10,9,0.15)_100%)] pointer-events-none z-10" />
-
-      {/* TREŚĆ HERO */}
-      <div className="relative z-20 mx-auto flex w-full max-w-[720px] flex-col items-center">
-
-        {/* LOGO W HERO: kwadratowe okno z kadrowaniem na telefonie (max 288px), pełne 3:2 od md */}
+        {/* LOGO W HERO */}
         <div className="relative mb-1 aspect-square w-full max-w-72 overflow-hidden md:aspect-[3/2] md:max-w-[720px]">
           <Image
             src="/images/Logo_Square.png"
