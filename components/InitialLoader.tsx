@@ -3,54 +3,67 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const STORAGE_KEY = "hasLoaded";
+const VISIBLE_MS = 900;
+const FADE_MS = 600;
+
 export default function InitialLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const [isFading, setIsFading] = useState(false);
 
   useEffect(() => {
-    // Sprawdzamy, czy użytkownik był już na stronie w tej sesji
-    const hasLoaded = sessionStorage.getItem("hasLoaded");
-    
+    let hasLoaded = false;
+    try {
+      hasLoaded = sessionStorage.getItem(STORAGE_KEY) === "true";
+    } catch {
+      // storage niedostępny, pokazujemy loader normalnie
+    }
+
     if (hasLoaded) {
       setIsLoading(false);
       return;
     }
 
-    // Zapisujemy informację, że strona została załadowana
-    sessionStorage.setItem("hasLoaded", "true");
+    const fadeTimer = setTimeout(() => setIsFading(true), VISIBLE_MS);
+    const removeTimer = setTimeout(() => {
+      setIsLoading(false);
+      try {
+        sessionStorage.setItem(STORAGE_KEY, "true");
+      } catch {
+        // ignorujemy
+      }
+    }, VISIBLE_MS + FADE_MS);
 
-    // Wydłużony czas widoczności loadera (np. 900ms)
-    const timer = setTimeout(() => {
-      setIsFading(true);
-      const removeTimer = setTimeout(() => {
-        setIsLoading(false);
-      }, 600); // Czas płynnego zanikania (600ms)
-      return () => clearTimeout(removeTimer);
-    }, 900);
-
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(fadeTimer);
+      clearTimeout(removeTimer);
+    };
   }, []);
 
   if (!isLoading) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-stone-50 transition-opacity duration-[600ms] ${
+    <div
+      role="status"
+      aria-label="Ładowanie strony"
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-cream transition-opacity duration-[600ms] ${
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
       <div className="flex flex-col items-center gap-4">
-        <div className="relative w-20 h-20 animate-pulse">
-          <Image 
-            src="/android-chrome-192x192.png" 
-            alt="Miody Staropolskie" 
+        <div className="relative h-20 w-20 animate-pulse motion-reduce:animate-none">
+          <Image
+            src="/android-chrome-192x192.png"
+            alt="Miody Staropolskie"
             width={80}
             height={80}
-            className="w-full h-full object-contain drop-shadow-sm"
+            className="h-full w-full object-contain drop-shadow-sm"
             priority
           />
         </div>
-        <span className="text-sm font-medium text-stone-600 tracking-wider">Miody Staropolskie</span>
+        <span className="text-sm font-medium tracking-wider text-stone-600">
+          Miody Staropolskie
+        </span>
       </div>
     </div>
   );
