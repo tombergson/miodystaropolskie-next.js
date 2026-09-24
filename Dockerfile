@@ -1,3 +1,6 @@
+# 0. Definicja argumentu globalnego
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
 # 1. Etap bazowy (pobranie zależności)
 FROM node:20-alpine AS deps
 RUN apk add --no-cache libc6-compat
@@ -11,6 +14,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Przekazanie argumentu jako zmiennej środowiskowej na czas buildu
+ARG NEXT_PUBLIC_TURNSTILE_SITE_KEY
+ENV NEXT_PUBLIC_TURNSTILE_SITE_KEY=$NEXT_PUBLIC_TURNSTILE_SITE_KEY
+
 RUN npm run build
 
 # 3. Etap produkcyjny (lekki obraz do uruchomienia)
