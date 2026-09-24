@@ -33,7 +33,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # KROK 1: Budowanie obrazu lokalnie z build-args
+      # KROK 1: Budowanie obrazu lokalnie zestandalone output dla Next.js
       - name: Build image locally
         uses: docker/build-push-action@v6
         with:
@@ -41,8 +41,6 @@ jobs:
           push: false
           load: true
           tags: smoke-test-image:latest
-          build-args: |
-            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
       # KROK 2: Smoke Test (weryfikacja czy kontener Next.js wstaje)
       - name: Verify Next.js (Smoke Test)
@@ -63,7 +61,7 @@ jobs:
           echo "✅ Smoke Test Passed!"
           docker stop test-container && docker rm test-container
 
-      # KROK 3: Push do GHCR z build-args
+      # KROK 3: Push do GHCR (jeśli test przeszedł pomyślnie)
       - name: Push final image to GHCR
         uses: docker/build-push-action@v6
         with:
@@ -73,5 +71,3 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ steps.vars.outputs.SHORT_SHA }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.DATE_TAG }}
-          build-args: |
-            NEXT_PUBLIC_TURNSTILE_SITE_KEY=${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
