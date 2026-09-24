@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import InitialLoader from "@/components/InitialLoader";
 import CookieBanner from "@/components/CookieBanner";
 import { Inter, Playfair_Display } from "next/font/google";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -75,6 +76,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <CookieBanner />
+        <ScrollToTop />
       </body>
     </html>
   );
