@@ -49,7 +49,7 @@ export default function Bees() {
             className="relative h-64 md:h-72 rounded-2xl overflow-hidden shadow-md group cursor-pointer bg-stone-100 border border-stone-200/80 will-change-transform"
           >
             <Image
-              src="/images/uploads/2018/10/krainka.jpg"
+              src="/images/uploads/2018/10/krainka.webp"
               alt="Pszczoła Kraińska linia Kortówka"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -74,7 +74,7 @@ export default function Bees() {
             className="relative h-64 md:h-72 rounded-2xl overflow-hidden shadow-md group cursor-pointer bg-stone-100 border border-stone-200/80 will-change-transform"
           >
             <Image
-              src="/images/uploads/2018/10/sklenar.jpg"
+              src="/images/uploads/2018/10/sklenar.webp"
               alt="Pszczoła Kraińska linia Sklenar"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

@@ -35,7 +35,7 @@ export default function InitialLoader() {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-stone-50 transition-opacity duration-600 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-stone-50 transition-opacity duration-[600ms] ${
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
@@ -44,8 +44,9 @@ export default function InitialLoader() {
           <Image 
             src="/android-chrome-192x192.png" 
             alt="Miody Staropolskie" 
-            fill 
-            className="object-contain drop-shadow-sm"
+            width={80}
+            height={80}
+            className="w-full h-full object-contain drop-shadow-sm"
             priority
           />
         </div>

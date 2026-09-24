@@ -14,7 +14,7 @@ export default function OrderBanner() {
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <Image
-          src="/images/uploads/2018/10/queen-cup-honeycomb-honey-bee-new-queen-rearing-compartment-56876.jpeg"
+          src="/images/uploads/2018/10/queen-cup-honeycomb-honey-bee-new-queen-rearing-compartment-56876.webp"
           alt="Matka pszczela i plaster miodu - Miody Staropolskie"
           fill
           className="object-cover object-center"

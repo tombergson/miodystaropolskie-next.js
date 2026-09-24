@@ -41,11 +41,12 @@ export default async function PostDetailPage({ params }: Props) {
 
         {post.images && post.images.length > 0 && (
           <div className="relative h-72 md:h-96 w-full mb-8 rounded-2xl overflow-hidden shadow-sm">
-            <Image 
+            <Image  
               src={post.images[0]} 
               alt={post.title} 
               fill 
               className="object-cover" 
+              sizes="(max-width: 768px) 100vw, 800px"
             />
           </div>
         )}

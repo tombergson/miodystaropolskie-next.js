@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import InitialLoader from "@/components/InitialLoader";
-import CookieBanner from "@/components/CookieBanner"; // <-- import banera cookies
+import CookieBanner from "@/components/CookieBanner";
 import { Inter, Playfair_Display } from "next/font/google";
 
 const inter = Inter({
@@ -66,15 +66,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pl" className="scroll-smooth">
+    <html lang="pl" className="scroll-smooth" data-scroll-behavior="smooth">
       <body
-        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-cream text-ink`}
+        className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-stone-50 text-ink`}
       >
         <InitialLoader />
         <Header />
         {children}
         <Footer />
-        <CookieBanner /> {/* <-- baner cookies dodany na samym końcu */}
+        <CookieBanner />
       </body>
     </html>
   );

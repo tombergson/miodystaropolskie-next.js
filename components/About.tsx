@@ -63,7 +63,7 @@ export default function About() {
             className="relative h-80 md:h-[420px] rounded-2xl overflow-hidden shadow-md bg-stone-100 order-1 lg:order-2 will-change-transform"
           >
             <Image
-            src="/images/uploads/2018/10/IMG-20170216-00039.jpg"
+            src="/images/uploads/2018/10/IMG-20170216-00039.webp"
             alt="Nasza pasieka - Miody Staropolskie"
             fill
             sizes="(max-width: 1024px) 100vw, 50vw"
