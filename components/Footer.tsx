@@ -78,13 +78,11 @@ export default function Footer() {
             aria-label="TomBergson (otwiera się w nowej karcie)"
             className="transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-honey"
           >
-            <Image
-              src="/images/tb_white_fill.png"
-              alt=""
-              width={18}
-              height={18}
-              className="inline-block object-contain"
-            />
+          <img
+            src="/images/tb_white_fill.png"
+            alt=""
+            className="inline-block w-4 h-auto object-contain"
+          />
           </Link>
         </div>
         <div>&copy; {year} miodystaropolskie.pl</div>
