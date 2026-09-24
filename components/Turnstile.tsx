@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 interface TurnstileProps {
-  siteKey: string;
+  siteKey?: string;
   onSuccess: (token: string) => void;
   onError?: () => void;
   onExpire?: () => void;
@@ -29,7 +29,15 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
 
+  // Pobieramy klucz z propsa lub automatycznie ze zmiennej środowiskowej
+  const activeSiteKey = siteKey || process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
   useEffect(() => {
+    if (!activeSiteKey) {
+      console.error("TurnstileError: Missing sitekey parameter.");
+      return;
+    }
+
     // Ładowanie skryptu Cloudflare Turnstile, jeśli jeszcze nie ma go na stronie
     if (!document.getElementById("cloudflare-turnstile-script")) {
       const script = document.createElement("script");
@@ -44,7 +52,7 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
       if (window.turnstile && containerRef.current && !widgetIdRef.current) {
         try {
           widgetIdRef.current = window.turnstile.render(containerRef.current, {
-            sitekey: siteKey,
+            sitekey: activeSiteKey,
             callback: (token: string) => onSuccess(token),
             "error-callback": () => onError?.(),
             "expired-callback": () => onExpire?.(),
@@ -81,7 +89,7 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
         }
       }
     };
-  }, [siteKey, onSuccess, onError, onExpire]);
+  }, [activeSiteKey, onSuccess, onError, onExpire]);
 
   return <div ref={containerRef} className="my-4" />;
 }
