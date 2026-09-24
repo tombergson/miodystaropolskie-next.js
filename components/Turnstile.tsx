@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 
 interface TurnstileProps {
-  siteKey?: string;
   onSuccess: (token: string) => void;
   onError?: () => void;
   onExpire?: () => void;
@@ -25,20 +24,19 @@ declare global {
   }
 }
 
-export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: TurnstileProps) {
+export default function Turnstile({ onSuccess, onError, onExpire }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
 
-  // Pobieramy klucz z propsa lub automatycznie ze zmiennej środowiskowej
-  const activeSiteKey = (siteKey && siteKey.trim() !== "") ? siteKey : process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  // Tutaj wpisujemy klucz publiczny bezpośrednio – jest bezpieczny, bo to klucz publiczny
+  const siteKey = "0x4AAAAAAFCUbXy7QXHMc-Dw";
 
   useEffect(() => {
-    if (!activeSiteKey) {
+    if (!siteKey) {
       console.error("TurnstileError: Missing sitekey parameter.");
       return;
     }
 
-    // Ładowanie skryptu Cloudflare Turnstile, jeśli jeszcze nie ma go na stronie
     if (!document.getElementById("cloudflare-turnstile-script")) {
       const script = document.createElement("script");
       script.id = "cloudflare-turnstile-script";
@@ -52,7 +50,7 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
       if (window.turnstile && containerRef.current && !widgetIdRef.current) {
         try {
           widgetIdRef.current = window.turnstile.render(containerRef.current, {
-            sitekey: activeSiteKey,
+            sitekey: siteKey,
             callback: (token: string) => onSuccess(token),
             "error-callback": () => onError?.(),
             "expired-callback": () => onExpire?.(),
@@ -77,19 +75,16 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
       }, 100);
     }
 
-    // Funkcja sprzątająca (Cleanup) przy odmontowywaniu komponentu lub zmianie strony
     return () => {
       if (interval) clearInterval(interval);
       if (window.turnstile && widgetIdRef.current) {
         try {
           window.turnstile.remove(widgetIdRef.current);
           widgetIdRef.current = null;
-        } catch (e) {
-          // Ignorujemy drobne błędy, jeśli widget już zdążył zniknąć z DOM
-        }
+        } catch (e) {}
       }
     };
-  }, [activeSiteKey, onSuccess, onError, onExpire]);
+  }, [siteKey, onSuccess, onError, onExpire]);
 
   return <div ref={containerRef} className="my-4" />;
 }
