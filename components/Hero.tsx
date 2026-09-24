@@ -106,18 +106,17 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(12,10,9,0.15)_100%)] pointer-events-none z-10" />
       
       {/* TREŚĆ HERO */}
-      <div className="relative z-20 max-w-2xl mx-auto flex flex-col items-center">
+      <div className="relative z-20 mx-auto flex w-full max-w-[720px] flex-col items-center">
 
-        {/* LOGO W HERO */}
-        <div className="mb-1 flex justify-center">
+        {/* LOGO W HERO: kwadratowe okno z kadrowaniem na telefonie (max 288px), pełne 3:2 od md */}
+        <div className="relative mb-1 aspect-square w-full max-w-72 overflow-hidden md:aspect-[3/2] md:max-w-[720px]">
           <Image
             src="/images/Main_Logo_3x2.png"
             alt="Miody Staropolskie Logo"
-            width={880}
-            height={303}
+            fill
             priority
-            style={{ width: "auto", height: "auto" }}
-            className="max-w-[480px] md:max-w-[720px] drop-shadow-lg"
+            sizes="(min-width: 768px) 720px, 700px"
+            className="scale-[1.6] object-cover drop-shadow-lg md:scale-100 md:object-contain"
           />
         </div>
 
