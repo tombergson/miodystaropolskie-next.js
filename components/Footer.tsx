@@ -17,7 +17,7 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 h-0.5 w-24 -translate-x-1/2 rounded-full bg-honey" />
 
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-3 md:items-baseline">
-        <div className="flex w-fit flex-col items-center">
+        <div className="flex w-fit flex-col items-center justify-self-center md:justify-self-start">
           <p className="font-playfair text-2xl font-semibold text-ink">
             Miody <span className="text-amber-800">Staropolskie</span>
           </p>
