@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 interface Honey {
   slug: string;
@@ -61,11 +61,11 @@ export default function Products({ honeys }: ProductsProps) {
       </div>
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.1 }}
       >
         {honeys.map((honey) => {
           const imageSrc = honey.images && honey.images.length > 0
@@ -79,11 +79,13 @@ export default function Products({ honeys }: ProductsProps) {
             <motion.div
               key={honey.slug}
               variants={cardVariants}
-              className="bg-white rounded-lg border border-stone-200/80 border-b-4 border-b-stone-200 shadow-xs hover:shadow-lg hover:border-b-honey transition-all duration-300 flex flex-col overflow-hidden group will-change-transform"
+              className="group flex flex-col overflow-hidden rounded-lg border border-stone-200/80 border-b-4 border-b-stone-200 bg-white shadow-xs transition-[box-shadow,border-color] duration-300 hover:border-b-honey hover:shadow-lg"
             >
               <Link
                 href={`/miody/${honey.slug}`}
-                className="relative h-72 md:h-80 bg-stone-50 flex items-center justify-center p-6 overflow-hidden cursor-pointer"
+                aria-hidden="true"
+                tabIndex={-1}
+                className="relative flex h-72 cursor-pointer items-center justify-center overflow-hidden bg-stone-50 p-6 md:h-80"
               >
                 <Image
                   src={imageSrc}
@@ -91,20 +93,20 @@ export default function Products({ honeys }: ProductsProps) {
                   width={240}
                   height={300}
                   style={{ height: "100%", width: "auto" }}
-                  className="object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </Link>
 
-              <div className="p-6 flex flex-col flex-grow text-center">
-                <h3 className="text-xl font-playfair font-semibold text-honey-dark mb-2">
+              <div className="flex flex-grow flex-col p-6 text-center">
+                <h3 className="mb-2 text-xl font-playfair font-semibold text-honey-dark">
                   {cleanTitle}
                 </h3>
-                <p className="text-stone-600 text-sm flex-grow mb-4">
+                <p className="mb-4 flex-grow text-sm text-stone-600">
                   {description}
                 </p>
                 <Link
                   href={`/miody/${honey.slug}`}
-                  className="inline-block text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors mt-auto"
+                  className="mt-auto inline-block text-sm font-medium text-amber-700 transition-colors hover:text-amber-800"
                 >
                   Dowiedz się więcej &rarr;
                 </Link>
