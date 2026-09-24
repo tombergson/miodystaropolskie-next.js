@@ -59,6 +59,21 @@ export const metadata: Metadata = {
     title: "Miody Staropolskie | Pasieka pod lasem – Dęblin",
     description:
       "Naturalne miody z pasieki w Dęblinie. Ekologiczny, naturalnie bezglutenowy.",
+    images: [
+      {
+        url: "/images/og-share.png",
+        width: 1200,
+        height: 630,
+        alt: "Miody Staropolskie - Naturalne miody z pasieki w Dęblinie",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Miody Staropolskie | Pasieka pod lasem – Dęblin",
+    description:
+      "Naturalne miody z pasieki w Dęblinie. Ekologiczny, naturalnie bezglutenowy.",
+    images: ["/images/og-share.png"],
   },
   robots: { index: true, follow: true },
 };
