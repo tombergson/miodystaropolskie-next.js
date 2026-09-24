@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Socials() {
   return (
-    <section className="py-4 px-6 w-full bg-cream border-y border-stone-200/60 shadow-sm text-center">
+    <section className="py-4 px-6 w-full bg-cream-dark border-y border-honey/20 shadow-sm text-center">
       <div className="max-w-6xl mx-auto">
         <h3 className="text-xl font-playfair font-bold text-ink mb-6">
           Obserwuj nas na:

@@ -24,7 +24,7 @@ const slideRightVariants: Variants = {
 export default function About() {
   return (
     // Używamy tego samego sprawdzonego stylu obramowania i cienia
-    <section className="w-full bg-white py-20 px-6 border-y border-stone-200/80 shadow-xs relative">
+    <section className="w-full bg-cream py-20 px-6 border-y border-stone-200/80 shadow-xs relative">
       <div className="max-w-7xl mx-auto">
         {/* Nagłówek sekcji z żółtą kreską */}
         <div className="text-center mb-16 flex flex-col items-center">

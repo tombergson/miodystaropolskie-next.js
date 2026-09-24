@@ -5,14 +5,14 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t border-honey/30 bg-cream text-stone-600">
+    <footer className="relative border-t border-honey/30 bg-sand text-stone-700">
       {/* Cienka miodowa linia na górze, spójna z akcentem w Products */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-0.5 bg-honey rounded-full" />
 
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-3 md:items-baseline">
         <div className="flex w-fit flex-col items-center">
           <p className="font-playfair text-2xl font-semibold text-ink">
-            Miody <span className="text-honey-dark">Staropolskie</span>
+            Miody <span className="text-amber-800">Staropolskie</span>
           </p>
           {/* Kadrowanie logo bez edycji pliku: kwadratowe okno + powiększenie */}
           <div className="relative mt-2 h-44 w-44 overflow-hidden">
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-honey-dark">
+          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800">
             Nawigacja
           </p>
           <ul className="mt-4 space-y-2.5 text-sm">
@@ -55,7 +55,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-honey-dark">
+          <p className="text-xs font-semibold uppercase tracking-widest text-amber-800">
             Zamówienia
           </p>
           <p className="mt-4 text-sm text-stone-600 leading-relaxed">
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-honey/20 bg-white/60 px-6 py-6 text-center text-xs text-stone-600 flex flex-col items-center justify-center gap-2">
+      <div className="border-t border-stone-900/10 bg-black/5 px-6 py-6 text-center text-xs text-stone-700 flex flex-col items-center justify-center gap-2">
         <div className="flex items-center justify-center gap-1.5">
           <span>Designed by</span>
           <Link
