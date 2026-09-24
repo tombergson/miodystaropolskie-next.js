@@ -9,7 +9,12 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem("cookie_consent");
     if (!consent) {
-      setShowBanner(true);
+      // Opóźnienie pojawienia się banera (np. 1.5 sekundy)
+      const timer = setTimeout(() => {
+        setShowBanner(true);
+      }, 1500);
+
+      return () => clearTimeout(timer);
     }
   }, []);
 
