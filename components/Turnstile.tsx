@@ -20,12 +20,14 @@ declare global {
         theme?: "light" | "dark" | "auto";
       }) => string;
       reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
     };
   }
 }
 
 export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     // Ładowanie skryptu Cloudflare Turnstile, jeśli jeszcze nie ma go na stronie
@@ -38,31 +40,47 @@ export default function Turnstile({ siteKey, onSuccess, onError, onExpire }: Tur
       document.head.appendChild(script);
     }
 
-    let widgetId: string | null = null;
-
     const initTurnstile = () => {
-      if (window.turnstile && containerRef.current && !widgetId) {
-        widgetId = window.turnstile.render(containerRef.current, {
-          sitekey: siteKey,
-          callback: (token: string) => onSuccess(token),
-          "error-callback": () => onError?.(),
-          "expired-callback": () => onExpire?.(),
-          theme: "auto",
-        });
+      if (window.turnstile && containerRef.current && !widgetIdRef.current) {
+        try {
+          widgetIdRef.current = window.turnstile.render(containerRef.current, {
+            sitekey: siteKey,
+            callback: (token: string) => onSuccess(token),
+            "error-callback": () => onError?.(),
+            "expired-callback": () => onExpire?.(),
+            theme: "auto",
+          });
+        } catch (e) {
+          console.error("Turnstile render error:", e);
+        }
       }
     };
+
+    let interval: NodeJS.Timeout | null = null;
 
     if (window.turnstile) {
       initTurnstile();
     } else {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (window.turnstile) {
-          clearInterval(interval);
+          if (interval) clearInterval(interval);
           initTurnstile();
         }
       }, 100);
-      return () => clearInterval(interval);
     }
+
+    // Funkcja sprzątająca (Cleanup) przy odmontowywaniu komponentu lub zmianie strony
+    return () => {
+      if (interval) clearInterval(interval);
+      if (window.turnstile && widgetIdRef.current) {
+        try {
+          window.turnstile.remove(widgetIdRef.current);
+          widgetIdRef.current = null;
+        } catch (e) {
+          // Ignorujemy drobne błędy, jeśli widget już zdążył zniknąć z DOM
+        }
+      }
+    };
   }, [siteKey, onSuccess, onError, onExpire]);
 
   return <div ref={containerRef} className="my-4" />;
