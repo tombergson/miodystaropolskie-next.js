@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { notFound } from 'next/navigation'; // <-- 1. Importujemy funkcję notFound
 
 const contentDirectory = path.join(process.cwd(), 'content/honeys');
 
@@ -64,13 +65,13 @@ export function getAllHoneys(): Honey[] {
   });
 }
 
-// Pobieranie pojedynczego miodu po slug (teraz poprawnie async)
-export async function getHoneyBySlug(slug: string): Promise<Honey | null> {
+// Pobieranie pojedynczego miodu po slug
+export async function getHoneyBySlug(slug: string): Promise<Honey> { // Zmieniono zwrot z | null na Honey, bo notFound() przerywa działanie
   try {
     const filePath = path.join(contentDirectory, `${slug}.md`);
     
     if (!fs.existsSync(filePath)) {
-      return null;
+      notFound(); // <-- 2. Jeśli plik nie istnieje, natychmiast pokazujemy stronę 404
     }
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -87,6 +88,7 @@ export async function getHoneyBySlug(slug: string): Promise<Honey | null> {
       oldUrl: data.oldUrl || `/${slug}/`,
     };
   } catch (error) {
-    return null;
+    // Jeśli to nie był nasz błąd 404, a coś innego, też możemy wywołać notFound() lub rzucić błąd
+    notFound();
   }
 }
