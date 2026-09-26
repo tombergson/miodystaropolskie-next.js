@@ -50,20 +50,16 @@ export default function InitialLoader() {
         isFading ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      <div className="flex flex-col items-center gap-4">
-        <div className="relative h-20 w-20 animate-pulse motion-reduce:animate-none">
-          <Image
-            src="/android-chrome-192x192.png"
-            alt="Miody Staropolskie"
-            width={80}
-            height={80}
-            className="h-full w-full object-contain drop-shadow-sm"
-            priority
-          />
-        </div>
-        <span className="text-sm font-medium tracking-wider text-stone-600">
-          Miody Staropolskie
-        </span>
+      {/* Samo duże, pulsujące logo bez dodatkowego tekstu */}
+      <div className="relative h-40 w-40 animate-pulse motion-reduce:animate-none">
+        <Image
+          src="/images/Logo_Square.png"
+          alt="Miody Staropolskie - Logo"
+          width={160}
+          height={160}
+          className="h-full w-full object-contain drop-shadow-md"
+          priority
+        />
       </div>
     </div>
   );
