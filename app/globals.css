@@ -9,6 +9,7 @@
   --color-ink: #1a1a1a;
   --color-wood: #8b6914;
   --font-playfair: var(--font-playfair);
+  --font-sans: var(--font-inter);
 }
 
 html {

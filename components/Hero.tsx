@@ -139,18 +139,27 @@ export default function Hero() {
         {/* Ukryty nagłówek h1 dla wyszukiwarek (SEO) */}
         <h1 className="sr-only">Miody Staropolskie</h1>
 
-        <h2 className="-mt-6 mb-9 max-w-xl text-stone-50 text-2xl md:-mt-20 md:text-3xl leading-snug font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] font-playfair">
-          Poznaj smak prawdziwego miodu — ekologiczny, naturalnie bezglutenowy.
-        </h2>
+        <div className="-mt-6 mb-9 md:-mt-20">
+          <p className="max-w-xl text-stone-50 text-2xl md:text-3xl leading-snug font-light drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] font-sans">
+            Poznaj smak prawdziwego miodu
+          </p>
+          <p className="mt-3 text-white text-xs md:text-sm tracking-[0.2em] uppercase font-playfair drop-shadow-[0_1px_5px_rgba(0,0,0,0.8)]">
+            ekologiczny, naturalnie bezglutenowy
+          </p>
+        </div>
 
+        {/* Jasny, wyrazisty przycisk CTA */}
         <a
           href="#miody"
-          className="group relative inline-flex items-center gap-2.5 rounded-full bg-stone-950/30 px-6 py-2.5 text-xs font-medium tracking-widest uppercase text-stone-100 backdrop-blur-sm transition-all duration-300 hover:bg-stone-950/45 hover:text-white"
+          className="group relative inline-flex items-center gap-2.5 rounded-full bg-stone-100 px-7 py-3 text-xs font-semibold tracking-widest uppercase text-stone-900 shadow-lg transition-all duration-300 hover:bg-white hover:scale-105"
         >
           Sprawdź ofertę
-          <span className="block h-1.5 w-1.5 rounded-full bg-amber-400 transition-all duration-300 group-hover:scale-150 group-hover:bg-amber-300"></span>
+          <span className="block h-1.5 w-1.5 rounded-full bg-amber-600 transition-all duration-300 group-hover:scale-150 group-hover:bg-amber-500"></span>
         </a>
       </div>
+
+      {/* GRADIENT INK: Ciemny od dołu, płynnie przechodzący w jaśniejszy ku górze */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-[16vh] md:h-[25vh] bg-gradient-to-t from-ink from-0% via-ink/40 via-40% to-transparent pointer-events-none z-15" />
     </section>
   );
 }
