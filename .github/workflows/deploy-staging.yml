@@ -26,7 +26,7 @@ jobs:
         id: vars
         run: |
           echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-          echo "DATE_TAG=$(date +'\%Y-\%m-\%d_\%H-\%M')" >> $GITHUB_OUTPUT
+          echo "DATE_TAG=$(date +'%Y-%m-%d_%H-%M')" >> $GITHUB_OUTPUT
 
       - name: Log in to the Container registry
         uses: docker/login-action@v3
@@ -35,7 +35,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      # KROK 1: Budowanie obrazu lokalnie
       - name: Build image locally
         uses: docker/build-push-action@v6
         with:
@@ -44,26 +43,21 @@ jobs:
           load: true
           tags: smoke-test-image:latest
 
-      # KROK 2: Smoke Test
       - name: Verify Next.js (Smoke Test)
         run: |
           docker run -d --name test-container -p 3000:3000 smoke-test-image:latest
           sleep 10
-          
           STATUS=$(curl -o /dev/null -s -w "%{http_code}" http://localhost:3000)
           echo "Next.js responded with status: $STATUS"
-          
           if [ "$STATUS" -ne 200 ] && [ "$STATUS" -ne 302 ] && [ "$STATUS" -ne 404 ]; then
             echo "❌ Smoke Test Failed: HTTP $STATUS"
             docker logs test-container
             docker stop test-container && docker rm test-container
             exit 1
           fi
-          
           echo "✅ Smoke Test Passed!"
           docker stop test-container && docker rm test-container
 
-      # KROK 3: Push do GHCR
       - name: Push final image to GHCR
         uses: docker/build-push-action@v6
         with:
@@ -73,10 +67,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ steps.vars.outputs.SHORT_SHA }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.DATE_TAG }}
-            
-      # --- KROKI MIRROROWANIA DO GITLABA ---
 
-      # KROK 4: Logowanie do GitLab Container Registry
       - name: Log in to GitLab Container Registry
         uses: docker/login-action@v3
         with:
@@ -84,28 +75,27 @@ jobs:
           username: tombergson
           password: ${{ secrets.GITLAB_TOKEN }}
 
-      # KROK 5: Wypchnięcie obrazu `:staging` do GitLab Registry
       - name: Push image copy to GitLab Registry
         run: |
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:staging registry.gitlab.com/${{ env.IMAGE_NAME }}:staging
           docker push registry.gitlab.com/${{ env.IMAGE_NAME }}:staging
 
-      # KROK 6: Wypchnięcie kodu i automatyczny merge staging -> main na GitLabie
+      # KROK 6: Wypchnięcie pełnego mirroru (zarówno staging, jak i main) na GitLab
       - name: Push code mirror to GitLab
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
           git remote add gitlab https://oauth2:${GITLAB_TOKEN}@gitlab.com/${{ env.IMAGE_NAME }}.git
+          
+          # Pobierz informacje o zdalnym GitLabie i ustaw gałęzie
           git fetch gitlab
           
-          # Wypchnij staging na GitLab
+          # Wypchnij staging
           git push gitlab HEAD:staging --force
           
-          # Skonfiguruj gita w runnerze
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
-          
-          # Zmerguj staging z main bezpośrednio na GitLabie
-          git checkout main
-          git merge staging --no-edit
+          # Zmerguj staging do main i wypchnij na GitLab
+          git checkout -b local-staging
+          git checkout main || git checkout -b main gitlab/main || true
+          git merge local-staging --no-edit
+          git push origin main --force || true
           git push gitlab main:main --force
