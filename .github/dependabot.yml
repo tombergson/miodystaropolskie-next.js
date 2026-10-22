@@ -4,4 +4,4 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    target-branch: "dev"
+    open-pull-requests-limit: 10  # Zwiększenie limitu z 5 na 10
