@@ -17,7 +17,7 @@
     "react-markdown": "^10.1.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "resend": "^6.28.1",
+    "resend": "^6.34.1",
     "sharp": "^0.35.5"
   },
   "devDependencies": {
