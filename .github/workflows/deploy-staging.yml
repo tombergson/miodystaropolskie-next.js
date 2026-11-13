@@ -103,10 +103,15 @@ jobs:
       - name: Push image copy to GitLab Registry
         run: docker push registry.gitlab.com/${{ env.IMAGE_NAME }}:staging
 
-      # Mirror kodu: tylko gałąź staging. Bez merge'a do main i bez force-push na GitHub.
-      - name: Push code mirror to GitLab (staging)
+      # staging = źródło prawdy: dev i main na GitLabie są wyrównywane do tego samego commita
+      - name: Push code mirror to GitLab (staging, dev, main aligned to staging)
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
+          set -euo pipefail
           git remote add gitlab "https://oauth2:${GITLAB_TOKEN}@gitlab.com/${{ env.IMAGE_NAME }}.git"
-          git push gitlab HEAD:refs/heads/staging --force
+
+          for BRANCH in staging dev main; do
+            echo "→ gitlab/${BRANCH} := $(git rev-parse --short HEAD)"
+            git push gitlab "HEAD:refs/heads/${BRANCH}" --force
+          done
