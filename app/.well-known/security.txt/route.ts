@@ -3,7 +3,7 @@
 export const dynamic = "force-dynamic";
 
 const CONTACT = "mailto:studio@tombergson.eu";
-const CANONICAL = "https://tombergson.eu/.well-known/security.txt";
+const CANONICAL = "https://miodystaropolskie.pl/.well-known/security.txt";
 const VALID_DAYS = 360; // RFC 9116: Expires powinno wypadać w ciągu roku
 
 export function GET() {
