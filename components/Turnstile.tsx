@@ -24,19 +24,28 @@ declare global {
   }
 }
 
+// Klucz publiczny. W dev testowy klucz Cloudflare (zawsze przechodzi).
+const SITE_KEY =
+  process.env.NODE_ENV === "development"
+    ? "1x00000000000000000000AA"
+    : "0x4AAAAAAFCUbXy7QXHMc-Dw";
+
 export default function Turnstile({ onSuccess, onError, onExpire }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
 
-  // Tutaj wpisujemy klucz publiczny bezpośrednio – jest bezpieczny, bo to klucz publiczny
-  const siteKey = "0x4AAAAAAFCUbXy7QXHMc-Dw";
+  // Najnowsze callbacki w refach: zmiana ich tożsamości nie odtwarza widgetu
+  const onSuccessRef = useRef(onSuccess);
+  const onErrorRef = useRef(onError);
+  const onExpireRef = useRef(onExpire);
 
   useEffect(() => {
-    if (!siteKey) {
-      console.error("TurnstileError: Missing sitekey parameter.");
-      return;
-    }
+    onSuccessRef.current = onSuccess;
+    onErrorRef.current = onError;
+    onExpireRef.current = onExpire;
+  });
 
+  useEffect(() => {
     if (!document.getElementById("cloudflare-turnstile-script")) {
       const script = document.createElement("script");
       script.id = "cloudflare-turnstile-script";
@@ -50,10 +59,10 @@ export default function Turnstile({ onSuccess, onError, onExpire }: TurnstilePro
       if (window.turnstile && containerRef.current && !widgetIdRef.current) {
         try {
           widgetIdRef.current = window.turnstile.render(containerRef.current, {
-            sitekey: siteKey,
-            callback: (token: string) => onSuccess(token),
-            "error-callback": () => onError?.(),
-            "expired-callback": () => onExpire?.(),
+            sitekey: SITE_KEY,
+            callback: (token: string) => onSuccessRef.current(token),
+            "error-callback": () => onErrorRef.current?.(),
+            "expired-callback": () => onExpireRef.current?.(),
             theme: "auto",
           });
         } catch (e) {
@@ -62,7 +71,7 @@ export default function Turnstile({ onSuccess, onError, onExpire }: TurnstilePro
       }
     };
 
-    let interval: NodeJS.Timeout | null = null;
+    let interval: ReturnType<typeof setInterval> | null = null;
 
     if (window.turnstile) {
       initTurnstile();
@@ -80,11 +89,13 @@ export default function Turnstile({ onSuccess, onError, onExpire }: TurnstilePro
       if (window.turnstile && widgetIdRef.current) {
         try {
           window.turnstile.remove(widgetIdRef.current);
-          widgetIdRef.current = null;
-        } catch (e) {}
+        } catch {
+          // widget mógł już zostać usunięty
+        }
       }
+      widgetIdRef.current = null;
     };
-  }, [siteKey, onSuccess, onError, onExpire]);
+  }, []);
 
   return <div ref={containerRef} className="my-4" />;
 }

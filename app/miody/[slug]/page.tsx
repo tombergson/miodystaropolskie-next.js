@@ -3,6 +3,8 @@ import { getHoneyBySlug, getAllHoneys } from "@/lib/honeys";
 import Link from "next/link";
 
 // Generowanie statycznych ścieżek dla Next.js
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const honeys = getAllHoneys();
   return honeys.map((honey) => ({

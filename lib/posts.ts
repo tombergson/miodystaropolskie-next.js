@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { isSafeSlug } from "@/lib/slug";
 
 const postsDirectory = path.join(process.cwd(), "content/posts");
 
@@ -43,6 +44,11 @@ export function getAllPosts(): Post[] {
 }
 
 export function getPostBySlug(slug: string): Post | null {
+  // Slug z URL trafia do ścieżki pliku
+  if (!isSafeSlug(slug)) {
+    return null;
+  }
+
   try {
     const fullPath = path.join(postsDirectory, `${slug}.md`);
     const fileContents = fs.readFileSync(fullPath, "utf8");

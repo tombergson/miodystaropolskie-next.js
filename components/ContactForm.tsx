@@ -9,6 +9,7 @@ const fieldClass =
 
 export default function ContactForm() {
   const [token, setToken] = useState<string>("");
+  const [turnstileKey, setTurnstileKey] = useState(0);
   const [status, setStatus] = useState<{ success?: boolean; message?: string } | null>(null);
   const [isPending, startTransition] = useTransition();
 
@@ -31,10 +32,13 @@ export default function ContactForm() {
       if (result.success) {
         setStatus({ success: true, message: "Wiadomość została wysłana pomyślnie!" });
         formElement.reset();
-        setToken("");
       } else {
         setStatus({ success: false, message: result.error || "Wystąpił błąd podczas wysyłania." });
       }
+
+      // Token Turnstile jest jednorazowy: po każdej próbie wymuszamy nowy widget
+      setToken("");
+      setTurnstileKey((k) => k + 1);
     });
   };
 
@@ -69,6 +73,7 @@ export default function ContactForm() {
           id="name"
           name="name"
           required
+          maxLength={100}
           placeholder="Jan Kowalski"
           className={fieldClass}
         />
@@ -83,6 +88,7 @@ export default function ContactForm() {
           id="email"
           name="email"
           required
+          maxLength={254}
           placeholder="jan@example.com"
           className={fieldClass}
         />
@@ -97,6 +103,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
+          maxLength={5000}
           placeholder="W czym możemy Ci pomóc?"
           className={`${fieldClass} resize-none`}
         ></textarea>
@@ -105,7 +112,16 @@ export default function ContactForm() {
       {/* Stała wysokość, żeby formularz nie skakał po załadowaniu widgetu */}
       <div className="flex min-h-[65px] justify-center overflow-hidden">
         <Turnstile
-          onSuccess={(token) => setToken(token)}
+          key={turnstileKey}
+          onSuccess={(t) => setToken(t)}
+          onExpire={() => setToken("")}
+          onError={() => {
+            setToken("");
+            setStatus({
+              success: false,
+              message: "Nie udało się załadować weryfikacji CAPTCHA. Odśwież stronę i spróbuj ponownie.",
+            });
+          }}
         />
       </div>
 

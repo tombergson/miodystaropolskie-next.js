@@ -3,7 +3,8 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { notFound } from 'next/navigation'; // <-- 1. Importujemy funkcję notFound
+import { notFound } from 'next/navigation';
+import { isSafeSlug } from '@/lib/slug';
 
 const contentDirectory = path.join(process.cwd(), 'content/honeys');
 
@@ -30,14 +31,14 @@ export function getAllHoneys(): Honey[] {
   }
 
   const filenames = fs.readdirSync(contentDirectory);
-  
+
   const honeys: Honey[] = filenames
     .filter((filename) => filename.endsWith('.md'))
     .map((filename) => {
       const slug = filename.replace(/\.md$/, '');
       const filePath = path.join(contentDirectory, filename);
       const fileContents = fs.readFileSync(filePath, 'utf8');
-      
+
       const { data, content } = matter(fileContents);
 
       // Dla listy wystarczy synchroniczne przetworzenie treści
@@ -66,12 +67,17 @@ export function getAllHoneys(): Honey[] {
 }
 
 // Pobieranie pojedynczego miodu po slug
-export async function getHoneyBySlug(slug: string): Promise<Honey> { // Zmieniono zwrot z | null na Honey, bo notFound() przerywa działanie
+export async function getHoneyBySlug(slug: string): Promise<Honey> {
+  // Slug z URL trafia do ścieżki pliku, więc odrzucamy wszystko poza bezpiecznym wzorcem
+  if (!isSafeSlug(slug)) {
+    notFound();
+  }
+
   try {
     const filePath = path.join(contentDirectory, `${slug}.md`);
-    
+
     if (!fs.existsSync(filePath)) {
-      notFound(); // <-- 2. Jeśli plik nie istnieje, natychmiast pokazujemy stronę 404
+      notFound();
     }
 
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -87,8 +93,7 @@ export async function getHoneyBySlug(slug: string): Promise<Honey> { // Zmienion
       images: data.images || (data.image ? [data.image] : []),
       oldUrl: data.oldUrl || `/${slug}/`,
     };
-  } catch (error) {
-    // Jeśli to nie był nasz błąd 404, a coś innego, też możemy wywołać notFound() lub rzucić błąd
+  } catch {
     notFound();
   }
 }

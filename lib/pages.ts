@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { isSafeSlug } from '@/lib/slug';
 
 const pagesDirectory = path.join(process.cwd(), 'content/pages');
 
@@ -14,6 +15,11 @@ export interface PageData {
 }
 
 export async function getPageBySlug(slug: string): Promise<PageData | null> {
+  // Slug z URL trafia do ścieżki pliku
+  if (!isSafeSlug(slug)) {
+    return null;
+  }
+
   try {
     const fullPath = path.join(pagesDirectory, `${slug}.md`);
     if (!fs.existsSync(fullPath)) {
@@ -35,7 +41,7 @@ export async function getPageBySlug(slug: string): Promise<PageData | null> {
       contentHtml,
       oldUrl: matterResult.data.oldUrl,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

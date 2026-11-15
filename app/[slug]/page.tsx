@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getPageBySlug, getAllPages } from "@/lib/pages";
 import Link from "next/link";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const pages = getAllPages();
   return pages.map((page) => ({
